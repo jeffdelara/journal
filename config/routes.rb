@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'static_pages#index'
   resources :tasks
   devise_for :users
   resources :categories
