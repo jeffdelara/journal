@@ -12,11 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.label :name, class: "font-semibold text-gray-500" %>
+    <%= form.text_field :name, class: "text-xl border border-gray-500 w-full rounded py-1 px-2" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="mt-3">
+    <%= form.submit "Submit", class: "actions cursor-pointer w-full py-2 px-3 text-xl bg-indigo-500 hover:bg-indigo-600 border-2 border-indigo-500 hover:border-indigo-600 text-white inline-block font-semibold rounded-md shadow focus:outline-none" %>
   </div>
 <% end %>
