@@ -2,6 +2,7 @@
   color: green; }
 
 .field_with_errors {
+  width: 100%;
   padding: 2px;
   background-color: #ec4899;
   display: table; }
@@ -35,3 +36,17 @@
 
 label {
   display: block; }
+
+.logo {
+  background: -webkit-linear-gradient(45deg, #bef264, #d9f99d,#fef08a);
+  background: linear-gradient(45deg,#bef264, #d9f99d,#fef08a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+ 
+}
+
+select {
+  border: 1px solid #000;
+  border-radius: .3rem;
+  display: inline-block;
+}
