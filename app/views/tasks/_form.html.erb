@@ -1,4 +1,4 @@
-<%= form_with(model: task) do |form| %>
+<%= form_with(model: [category, task]) do |form| %>
   <% if task.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
@@ -11,37 +11,34 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="field mt-3">
+    <%= form.label :title, class: "font-semibold text-gray-500" %>
+    <%= form.text_field :title, class: "text-xl border border-gray-500 w-full rounded py-1 px-2" %>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
+  <div class="field mt-3">
+    <%= form.label :description, class: "font-semibold text-gray-500" %>
+    <%= form.text_area :description, class: "text-xl border border-gray-500 w-full rounded py-1 px-2", rows: 5 %>
   </div>
 
-  <div class="field">
-    <%= form.label :due %>
+  <div class="field mt-3">
+    <%= form.label :due, "Deadline (Date and time)", class: "font-semibold text-gray-500" %>
     <%= form.datetime_select :due %>
   </div>
 
-  <div class="field">
-    <%= form.label :completed %>
+  
+
+  <div class="field mt-3">
+    <%= form.label :category_id, class: "font-semibold text-gray-500" %>
+    <%= form.select :category_id, Category.where(user_id: current_user.id).map { |cat| [cat.name, cat.id] }, selected: params[:category_id] %>
+  </div>
+
+  <div class="field mt-3 flex flex-row gap-2 items-center">
     <%= form.check_box :completed %>
+    <%= form.label :completed, "Mark as completed", class: "font-semibold text-gray-500" %>
   </div>
 
-  <div class="field">
-    <%= form.label :category_id %>
-    <%= form.text_field :category_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions mt-3">
+    <%= form.submit "Submit", class: "actions cursor-pointer w-full py-2 px-3 text-xl bg-indigo-500 hover:bg-indigo-600 border-2 border-indigo-500 hover:border-indigo-600 text-white inline-block font-semibold rounded-md shadow focus:outline-none" %>
   </div>
 <% end %>

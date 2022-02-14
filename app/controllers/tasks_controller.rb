@@ -1,9 +1,11 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_category, except: [:index]
+  before_action :require_owner, except: [:index, :new, :create]
 
   # GET /tasks
   def index
-    @tasks = Task.all
+    @categories = Category.includes(:tasks).where(user_id: current_user.id).reverse
   end
 
   # GET /tasks/1
@@ -21,10 +23,10 @@ class TasksController < ApplicationController
 
   # POST /tasks
   def create
-    @task = Task.new(task_params)
+    @task = current_user.tasks.build(task_params)
 
     if @task.save
-      redirect_to @task, notice: 'Task was successfully created.'
+      redirect_to category_task_path(@category, @task), notice: 'Task was successfully created.'
     else
       render :new
     end
@@ -33,7 +35,7 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1
   def update
     if @task.update(task_params)
-      redirect_to @task, notice: 'Task was successfully updated.'
+      redirect_to category_task_path(@category, @task), notice: 'Task was successfully updated.'
     else
       render :edit
     end
@@ -46,13 +48,23 @@ class TasksController < ApplicationController
   end
 
   private
+    def require_owner 
+      unless current_user.id == @task.user_id
+        redirect_to tasks_path
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_task
       @task = Task.find(params[:id])
     end
 
+    def set_category 
+      @category = Category.find(params[:category_id])
+    end
+
     # Only allow a list of trusted parameters through.
     def task_params
-      params.require(:task).permit(:title, :description, :due, :completed, :category_id, :user_id)
+      params.require(:task).permit(:title, :description, :due, :completed, :category_id)
     end
 end

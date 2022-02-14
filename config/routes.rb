@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   root 'static_pages#index'
-  resources :tasks
+  
   devise_for :users
-  resources :categories
+  
+  get '/tasks', to: 'tasks#index'
+
+  resources :categories, except: [:show, :index] do 
+    resources :tasks
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

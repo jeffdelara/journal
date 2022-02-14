@@ -1,6 +1,9 @@
-<h1>Editing Task</h1>
+<div class="bg-white md:w-1/3 mx-auto my-6 shadow rounded p-6">
+<h1 class="text-3xl text-center mb-3 font-bold">Editing Task</h1>
 
-<%= render 'form', task: @task %>
+<%= render 'form', task: @task, category: @category %>
 
-<%= link_to 'Show', @task %> |
-<%= link_to 'Back', tasks_path %>
+  <div class="text-indigo-500 font-semibold mt-3 block">
+    <%= link_to 'Back', tasks_path %>
+  </div>
+</div>

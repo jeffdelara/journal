@@ -1,65 +1,52 @@
-body {
-  background-color: #fff;
-  color: #333;
-  margin: 33px; }
-
-body, p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px; }
-
-pre {
-  background-color: #eee;
-  padding: 10px;
-  font-size: 11px; }
-
-a {
-  color: #000; }
-
-a:visited {
-  color: #666; }
-
-a:hover {
-  color: #fff;
-  background-color: #000; }
-
-th {
-  padding-bottom: 5px; }
-
-td {
-  padding: 0 5px 7px; }
-
-div.field,
-div.actions {
-  margin-bottom: 10px; }
-
 #notice {
   color: green; }
 
 .field_with_errors {
+  width: 100%;
   padding: 2px;
-  background-color: red;
+  background-color: #ec4899;
   display: table; }
 
 #error_explanation {
-  width: 450px;
-  border: 2px solid red;
+  width: 100%;
+  border: 2px solid #ec4899;
   padding: 7px 7px 0;
   margin-bottom: 20px;
+  border-radius: 5px;
   background-color: #f0f0f0; }
 
 #error_explanation h2 {
   text-align: left;
   font-weight: bold;
   padding: 5px 5px 5px 15px;
-  font-size: 12px;
+  font-size: 1.2rem;
   margin: -7px -7px 0;
-  background-color: #c00;
+  background-color: #ec4899;
   color: #fff; }
 
 #error_explanation ul li {
-  font-size: 12px;
+  font-size: 1rem;
+  padding-top: .3rem;
+  padding-bottom: .3rem;
   list-style: square; }
+
+#error_explanation ul {
+  margin-left: 1rem;
+}
 
 label {
   display: block; }
+
+.logo {
+  background: -webkit-linear-gradient(45deg, #bef264, #d9f99d,#fef08a);
+  background: linear-gradient(45deg,#bef264, #d9f99d,#fef08a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+ 
+}
+
+select {
+  border: 1px solid #000;
+  border-radius: .3rem;
+  display: inline-block;
+}
