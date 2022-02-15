@@ -5,9 +5,10 @@
       <h2 class="text-xl font-bold text-center mb-2"><%= link_to category.name, edit_category_path(category), class: "text-indigo-700 hover:underline" %></h2>
       
       <% category.tasks.sort_by(&:created_at).reverse.each do |task| %>
-        <% bg = task.completed? ? 'text-gray-500 line-through' : 'bg-gray-50 font-semibold shadow' %>
-          <div class="<%= bg %> p-4 rounded">
-            <input type="checkbox" class="mr-1"> <%= link_to task.title, category_task_path(category, task) %>
+          <% bg = task.completed? ? 'line-through' : '' %> 
+          <div class="<%= bg %> p-4 rounded bg-gray-50 font-semibold shadow">
+            <%= check_box_tag("task_#{task.id}", task.id, checked = task.completed, 
+                data: { 'task-id': task.id, 'category-id': category.id, 'task-complete': task.completed }) %> <%= link_to task.title, category_task_path(category, task) %>
           </div>
       <% end %>
       
