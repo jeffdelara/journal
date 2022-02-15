@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   
   get '/tasks', to: 'tasks#index'
+  post '/accomplished_tasks/:id', to: 'accomplished_tasks#update'
 
   resources :categories, except: [:show, :index] do 
     resources :tasks
