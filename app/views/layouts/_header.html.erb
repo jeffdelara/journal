@@ -4,6 +4,7 @@
   <div class="flex justify-center items-center text-lg gap-4 mr-auto">
     <% if user_signed_in? %>
       <%= link_to "Tasks", tasks_path, class: "hover:text-indigo-50" %>
+      <%= link_to "Today", today_tasks_path, class: "hover:text-indigo-50" %>
     <% end %>
   </div>
 
