@@ -1,0 +1,13 @@
+<div class="bg-white flex flex-col gap-3 md:w-2/5 mx-auto shadow rounded p-6 mt-6">
+
+  <h1 class="text-3xl text-center mb-3 font-bold">Today's Tasks</h1>
+
+  <% @tasks.sort_by(&:due).each do |task| %>
+    <% bg = task.completed? ? 'line-through' : '' %> 
+    <div class="<%= bg %> p-4 rounded bg-gray-50 font-semibold shadow">
+      <%= check_box_tag("task_#{task.id}", task.id, checked = task.completed, data: { 'task-id': task.id, 'category-id': task.category.id, 'task-complete': task.completed }, class: 'cursor-pointer mr-2') %>
+      <%= link_to task.title, category_task_path(task.category.id, task) %> <span class="text-gray-500 font-normal">in <%= task.category.name %> at <%= task.due.strftime("%H:%m %p") %></span>
+    </div>
+  <% end %>
+
+</div>
