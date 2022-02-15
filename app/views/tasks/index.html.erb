@@ -8,7 +8,7 @@
           <% bg = task.completed? ? 'line-through' : '' %> 
           <div class="<%= bg %> p-4 rounded bg-gray-50 font-semibold shadow">
             <%= check_box_tag("task_#{task.id}", task.id, checked = task.completed, 
-                data: { 'task-id': task.id, 'category-id': category.id, 'task-complete': task.completed }) %> <%= link_to task.title, category_task_path(category, task) %>
+                data: { 'task-id': task.id, 'category-id': category.id, 'task-complete': task.completed }, class: 'cursor-pointer') %><%= link_to task.title, category_task_path(category, task), class: 'ml-2' %>
           </div>
       <% end %>
       
