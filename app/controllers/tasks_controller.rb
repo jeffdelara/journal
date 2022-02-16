@@ -43,11 +43,15 @@ class TasksController < ApplicationController
 
   # DELETE /tasks/1
   def destroy
+
     @task.destroy
     redirect_to tasks_url, notice: 'Task was successfully destroyed.'
+    
   end
 
+
   private
+  
     def require_owner 
       unless current_user.id == @task.user_id
         redirect_to tasks_path
