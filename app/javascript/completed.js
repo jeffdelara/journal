@@ -15,18 +15,18 @@ document.addEventListener('turbolinks:load', () => {
         task_id: taskId, 
         category_id: categoryId,
         completed: !isComplete
-      }
+      };
 
       const headers = {
         'Content-Type': 'application/json',
         'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content
-      }
+      };
 
       const options = {
         method: 'POST', 
         headers: headers, 
         body: JSON.stringify(payload)
-      }
+      };
 
       fetch(`/accomplished_tasks/${taskId}`, options)
         .then(response => {
@@ -40,7 +40,8 @@ document.addEventListener('turbolinks:load', () => {
 
       if(isComplete) {
         checkbox.parentElement.classList.remove('line-through');
-      } else {
+      } 
+      else {
         checkbox.parentElement.classList.add('line-through');
       }
 
@@ -48,5 +49,5 @@ document.addEventListener('turbolinks:load', () => {
 
     })
     
-  })
-})
+  });
+});
