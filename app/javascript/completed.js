@@ -38,7 +38,7 @@ document.addEventListener('turbolinks:load', () => {
           }
         });
 
-      if(isComplete) {
+      if (isComplete) {
         checkbox.parentElement.classList.remove('line-through');
       } 
       else {
