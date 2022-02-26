@@ -23,10 +23,8 @@
 
   <div class="field mt-3">
     <%= form.label :due, "Deadline (Date and time)", class: "font-semibold text-gray-500" %>
-    <%= form.datetime_select :due %>
+    <%= form.datetime_field :due, class: 'w-full border border-gray-500 rounded p-1' %>
   </div>
-
-  
 
   <div class="field mt-3">
     <%= form.label :category_id, class: "font-semibold text-gray-500" %>
