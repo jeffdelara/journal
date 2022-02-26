@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   
-  before_action :set_task, :only => [:show, :edit, :update, :destroy]
   before_action :set_category, :except => [:index]
+  before_action :set_task, :only => [:show, :edit, :update, :destroy]
   before_action :require_owner, :except => [:index, :new, :create]
 
 
@@ -54,11 +54,11 @@ class TasksController < ApplicationController
   end
 
   def set_task
-    @task = Task.find params[:id]
+    @task = @category.tasks.find params[:id]
   end
 
   def set_category 
-    @category = Category.find params[:category_id]
+    @category = current_user.categories.find params[:category_id]
   end
 
   def task_params

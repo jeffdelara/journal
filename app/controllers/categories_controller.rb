@@ -49,7 +49,7 @@ class CategoriesController < ApplicationController
   end
 
   def set_category
-    @category = Category.find params[:id]
+    @category = current_user.categories.find params[:id]
   end
 
   def category_params
